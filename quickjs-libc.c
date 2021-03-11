@@ -680,6 +680,7 @@ static JSValue js_std_unsetenv(JSContext *ctx, JSValueConst this_val,
 static JSValue js_std_getenviron(JSContext *ctx, JSValueConst this_val,
                                  int argc, JSValueConst *argv)
 {
+#if defined(__APPLE__)
     char **envp;
     const char *name, *p, *value;
     JSValue obj;
@@ -711,6 +712,9 @@ static JSValue js_std_getenviron(JSContext *ctx, JSValueConst this_val,
     return obj;
  fail:
     JS_FreeValue(ctx, obj);
+#else
+#	error Fuck.
+#endif
     return JS_EXCEPTION;
 }
 

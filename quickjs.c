@@ -27245,7 +27245,6 @@ static JSModuleDef *js_host_resolve_imported_module(JSContext *ctx,
     }
     if (!cname)
         return NULL;
-
     module_name = JS_NewAtom(ctx, cname);
     if (module_name == JS_ATOM_NULL) {
         js_free(ctx, cname);
