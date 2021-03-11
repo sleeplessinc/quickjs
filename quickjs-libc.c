@@ -55,11 +55,6 @@ typedef sig_t sighandler_t;
 #endif
 #endif /* __APPLE__ */
 
-#if linux
-const char *environ[] = { 0 };
-#endif
-
-
 #endif
 
 #if !defined(_WIN32)
