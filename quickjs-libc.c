@@ -55,6 +55,10 @@ typedef sig_t sighandler_t;
 #endif
 #endif /* __APPLE__ */
 
+#if linux
+const char *environ[] = { 0 };
+#endif
+
 
 #endif
 
@@ -681,7 +685,6 @@ static JSValue js_std_unsetenv(JSContext *ctx, JSValueConst this_val,
 static JSValue js_std_getenviron(JSContext *ctx, JSValueConst this_val,
                                  int argc, JSValueConst *argv)
 {
-#if defined(__APPLE__)
     char **envp;
     const char *name, *p, *value;
     JSValue obj;
@@ -713,7 +716,6 @@ static JSValue js_std_getenviron(JSContext *ctx, JSValueConst this_val,
     return obj;
  fail:
     JS_FreeValue(ctx, obj);
-#endif
     return JS_EXCEPTION;
 }
 
