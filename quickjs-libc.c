@@ -55,6 +55,7 @@ typedef sig_t sighandler_t;
 #endif
 #endif /* __APPLE__ */
 
+
 #endif
 
 #if !defined(_WIN32)
@@ -712,8 +713,6 @@ static JSValue js_std_getenviron(JSContext *ctx, JSValueConst this_val,
     return obj;
  fail:
     JS_FreeValue(ctx, obj);
-#else
-#	error Fuck.
 #endif
     return JS_EXCEPTION;
 }
